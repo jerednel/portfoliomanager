@@ -1,0 +1,36 @@
+<h3>Transfer Hotel Ownership for <%= @hotel.name %></h3>
+
+
+
+<p>Current Manager: <%= @hotel.users.first.email %></p>
+
+<p>Transfer To</p>
+
+<%= form_for @hotel, :url => { :action => "do_transfer" } do |f| %>
+	<% if @hotel.errors.any? %>
+	<div class="error messages">
+	<h2>Form is invalid</h2>
+	<ul>
+		<% for message in @hotel.errors.full_messages %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+	</div>
+	<% end %>
+
+	  <div class="field">
+    
+    <%= f.hidden_field :id, :value => @hotel.id %>
+  </div>
+	  <div class="field">
+    
+    <%= f.hidden_field :old_user_id, :value => @hotel.users.first.id %>
+  </div>
+<div class="field">
+<%= f.collection_select(:user_ids, User.all, :id, :email) %>
+</div>
+<br>
+<div class="actions"><%= f.submit :confirm=>"Are you sure you wish to transfer ownership?" %></div>
+
+
+<% end %>
