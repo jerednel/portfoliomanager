@@ -2,8 +2,20 @@
 
 <ul>
 <% @hotels.each do |hotel| %>
-  <li><%= link_to hotel.name, hotel %></li>
+  <li><%= link_to hotel.inncode + " - " + hotel.name, hotel %>
+ 	<% if hotel.tasks.where("status = 'open'").count > 0 %>
+  	 - <small><%= hotel.tasks.count %> open tasks</small></li>
+  	<% end %>
 <% end %>
 </ul>
 
 <%= link_to "Add New Hotel", new_hotel_path %>
+
+<h3>All Open Tasks</h3>
+<ul>
+<% @hotels.each do |hotel| %>
+	<% hotel.tasks.each do |task| %>
+		<li><%= link_to task.name, hotels_path + "/" + hotel.id.to_s %> (<%= hotel.inncode %>)</li>
+	<% end %>
+<% end %>
+</ul>

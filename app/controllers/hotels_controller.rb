@@ -35,7 +35,8 @@ class HotelsController < ApplicationController
 
 	def index
 		@user = User.find(session[:user_id])
-		@hotels = @user.hotels
+		@hotels = @user.hotels.order("inncode")
+		#@tasks = @hotels.tasks
 	end
 
 end
