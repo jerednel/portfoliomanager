@@ -1,8 +1,13 @@
 class TasksController < ApplicationController
-
+before_filter :logged_in? 
 	def new
-		@task = Task.new
-		@hotel = Hotel.find(params[:hotel_id])
+		@user = User.find(session[:user_id])
+		if Hotel.where("id = ?", params[:hotel_id]).count  == 1 && @user.hotels.where("id = ?", params[:hotel_id]) != '[]' #make sure hotel exists and hotel belongs to the user
+			@task = Task.new
+			@hotel = Hotel.find(params[:hotel_id])
+		else
+			redirect_to :controller => "hotels", :action => "index"
+		end
 	end
 
 	def create

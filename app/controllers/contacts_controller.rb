@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  before_filter :logged_in? 
 	def new
 		@contact = Contact.new
 		@hotel = Hotel.find(params[:hotel_id])
