@@ -1,0 +1,46 @@
+
+<h3><%= link_to "Hotels", hotels_path %> > <%= @hotel.name %></h3> 
+
+<h3>Hotel Contacts</h3>
+<% if @contacts.empty? %>
+	<em>No contacts saved for this hotel</em>
+<% else %>
+<table class="table table-hover">
+<thead><tr><th>Name</th><th>Email</th></tr></thead>
+<tbody>
+	<% @contacts.each do |contact| %>
+
+	<tr><td><%= contact.first_name + " " + contact.last_name %></td><td> <%= contact.email %></td></tr>
+
+	<% end %>
+	</tbody>
+</table>
+
+	<%= link_to "Email Group", "mailto:" + @contact_email_list, :class=>'btn btn-xs btn-primary' %> 
+<% end %>
+<%= link_to "Add Contact", new_contact_path + "?hotel_id=" + @hotel.id.to_s, :class=>'btn btn-xs btn-primary' %>
+
+<h3>Currently Open Tasks</h3>
+<ul>
+<% if @tasks.empty? %>
+<li><em>No open tasks for this hotel</em></li>
+<% else %>
+<% @tasks.each do |task| %>
+<li><%= task.name %> - <%= link_to "Close Task", close_task_path + "?task_id=" + task.id.to_s %></li>
+<% end %>
+
+<% end %>
+</ul>
+
+<h3>Closed Tasks</h3>
+<ul>
+<% if @closed_tasks.empty? %>
+<li><em>No closed tasks for this hotel</em></li>
+<% else %>
+<% @closed_tasks.each do |task| %>
+<li><%= task.name %> - <%= link_to "Reopen Task", reopen_task_path + "?task_id=" + task.id.to_s %> - <%= link_to "Delete Task", delete_tasks_path + "?task_id=#{task.id.to_s}" %></li>
+<% end %>
+<% end %>
+</ul>
+
+<%= link_to "New Task", new_task_path + "?hotel_id=" + @hotel.id.to_s, :class=>'btn btn-xs btn-primary' %>

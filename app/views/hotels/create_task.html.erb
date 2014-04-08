@@ -1,0 +1,22 @@
+<h1>Add Task</h1>
+
+<%= form_for @task do |f| %>
+	<% if @task.errors.any? %>
+	<div class="error messages">
+	<h2>Form is invalid</h2>
+	<ul>
+		<% for message in @task.errors.full_messages %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+	</div>
+	<% end %>
+
+<div class="field">
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+</div>
+
+
+<div class="actions"><%= f.submit %></div>
+<% end %>

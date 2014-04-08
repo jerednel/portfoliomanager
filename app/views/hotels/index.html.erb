@@ -1,0 +1,9 @@
+<h2>My Hotels</h2>
+
+<ul>
+<% @hotels.each do |hotel| %>
+  <li><%= link_to hotel.name, hotel %></li>
+<% end %>
+</ul>
+
+<%= link_to "Add New Hotel", new_hotel_path %>

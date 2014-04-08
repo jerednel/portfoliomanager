@@ -1,0 +1,27 @@
+<h1>Add Hotel</h1>
+
+<%= form_for @hotel do |f| %>
+	<% if @hotel.errors.any? %>
+	<div class="error messages">
+	<h2>Form is invalid</h2>
+	<ul>
+		<% for message in @hotel.errors.full_messages %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+	</div>
+	<% end %>
+
+<div class="field">
+	<%= f.label :inncode %>
+	<%= f.text_field :inncode %>
+</div>
+
+<div class="field">
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+</div>
+
+
+<div class="actions"><%= f.submit %></div>
+<% end %>
