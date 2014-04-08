@@ -6,6 +6,9 @@ AuthInRails::Application.routes.draw do
   get "close_task" => "tasks#close", :as => "close_task"
   get "reopen_task" => "tasks#reopen", :as => "reopen_task"
   get "delete_tasks" => "tasks#destroy", :as => "delete_tasks"
+  get "transfer_hotel/:id" => "hotels#transfer", :as => "transfer_hotel"
+  put "do_transfer" => "hotels#do_transfer", :as => "do_transfer"
+  #get "do_transfer" => "hotels#do_transfer", :as =>"do_transfer"
   #post "new_task" => "tasks#new", :as => "new_task"
   resources :users
   resources :sessions

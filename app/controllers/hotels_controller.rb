@@ -39,6 +39,28 @@ class HotelsController < ApplicationController
 		#@tasks = @hotels.tasks
 	end
 
+	def transfer
+		@user = User.find(session[:user_id])
+	  if Hotel.where("id = ?", params[:id]).count  == 1 && @user.hotels.where("id = ?", params[:id]) != '[]'
+		@hotel = Hotel.find(params[:id])
+	  else
+	  	redirect_to :controller => "hotels", :action => "index"
+
+	  end
+	end
+
+	def do_transfer
+
+		@old_user_id = User.find(params[:hotel][:old_user_id])
+		@hotel = Hotel.find(params[:hotel][:id])
+		@new_user = User.find(params[:hotel][:user_ids])
+		@hotel.users.delete(@old_user_id)
+		@hotel.users << @new_user
+		redirect_to hotels_path, :notice => "Hotel Transferred"
+
+
+	end
+
 end
 
 
