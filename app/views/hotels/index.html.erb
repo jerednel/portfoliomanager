@@ -4,7 +4,7 @@
 <% @hotels.each do |hotel| %>
   <li><%= link_to hotel.inncode + " - " + hotel.name, hotel %>
  	<% if hotel.tasks.where("status = 'open'").count > 0 %>
-  	 - <small><%= hotel.tasks.count %> open tasks</small></li>
+  	 - <small><%= hotel.tasks.where("status = 'open'").count %> open tasks</small></li>
   	<% end %>
 <% end %>
 </ul>
