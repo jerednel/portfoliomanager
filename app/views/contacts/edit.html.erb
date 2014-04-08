@@ -1,0 +1,38 @@
+<h3>Editing <%= @contact.first_name + @contact.last_name%></h3>
+
+<%= form_for @contact do |f| %>
+	<% if @contact.errors.any? %>
+	<div class="error messages">
+	<h2>Form is invalid</h2>
+	<ul>
+		<% for message in @contact.errors.full_messages %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+	</div>
+	<% end %>
+
+<div class="field">
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name %>
+</div>
+<div class="field">
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name %>
+</div>
+<div class="field">
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+</div>
+<div class="field">
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+</div>
+<div class="field">
+	<%= f.label :phone %>
+	<%= f.text_field :phone %>
+</div>
+
+
+<div class="actions"><%= f.submit %></div>
+<% end %>
