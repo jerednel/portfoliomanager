@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
 
 	def create
 		@hotel = Hotel.find(params["contact"]["id"])
-		@contact = Contact.new("first_name" => params[:contact][:first_name], "last_name" => params[:contact][:last_name], "phone" => params[:contact][:phone], "email" => params[:contact][:email])
+		@contact = Contact.new("first_name" => params[:contact][:first_name], "last_name" => params[:contact][:last_name], "phone" => params[:contact][:phone], "email" => params[:contact][:email], "email" => params[:contact][:title])
 		@hotel.contacts << @contact
 		if @contact.save
 			redirect_to hotels_path + "/#{@hotel.id}", :notice => "Contact added"

@@ -15,7 +15,9 @@
 <ul>
 <% @hotels.each do |hotel| %>
 	<% hotel.tasks.each do |task| %>
+		<% if task.status == 'open' %>
 		<li><%= link_to task.name, hotels_path + "/" + hotel.id.to_s %> (<%= hotel.inncode %>)</li>
+		<% end %>
 	<% end %>
 <% end %>
 </ul>
