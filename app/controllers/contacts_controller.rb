@@ -14,4 +14,22 @@ class ContactsController < ApplicationController
 			render "new"
 		end
 	end
+
+  def edit
+    @contact = Contact.find(params[:id])
+  end
+
+  def update
+    @contact = Contact.find(params[:id])
+
+    respond_to do |format|
+      if @contact.update_attributes(params[:contact])
+        format.html { redirect_to @contact.hotels.first, notice: 'Contact was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end
