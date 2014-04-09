@@ -53,19 +53,14 @@
     </div>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container" style="padding:50px">
 
-         <% flash.each do |name, msg| %>
-     <button type="button" class="btn btn-xs btn-warning"> <%= content_tag :div, msg, :id => "flash_#{name}" %></button>
-    <% end %>
-    <%= yield %></p>
-       
-      </div>
-    </div>
 
     <div class="container">
-      <!-- Example row of columns -->
+        <% flash.each do |name, msg| %>
+     <button type="button" class="btn btn-xs btn-warning"> <%= content_tag :div, msg, :id => "flash_#{name}" %></button>
+    <% end %>
+    <div style="padding:25px"></div>
+    <%= yield %>
       <div class="row">
         <div class="col-md-4">
           <h2>Heading</h2>

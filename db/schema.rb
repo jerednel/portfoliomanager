@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140408134621) do
+ActiveRecord::Schema.define(:version => 20140409145431) do
 
   create_table "contacts", :force => true do |t|
     t.string   "first_name"
@@ -32,8 +32,15 @@ ActiveRecord::Schema.define(:version => 20140408134621) do
   create_table "hotels", :force => true do |t|
     t.string   "inncode"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "global_web_url"
+    t.string   "local_web_url"
+    t.string   "facebook_url"
+    t.string   "twitter_url"
   end
 
   create_table "hotels_tasks", :id => false, :force => true do |t|

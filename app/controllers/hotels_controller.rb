@@ -3,7 +3,23 @@ class HotelsController < ApplicationController
 	def new
 		@hotel = Hotel.new
 	end
+	def edit
+    	@hotel = Hotel.find(params[:id])
+	end
+	def update
+    	@hotel = Hotel.find(params[:id])
 
+    	respond_to do |format|
+     	if @hotel.update_attributes(params[:hotel])
+       	 	format.html { redirect_to @hotel, notice: 'Hotel was successfully updated.' }
+       	 	format.json { head :no_content }
+    	 else
+      	  	format.html { render action: "edit" }
+       	 	format.json { render json: @hotel.errors, status: :unprocessable_entity }
+    	 end
+    end
+
+	end
 	def show
 
 		@user = User.find(session[:user_id])
