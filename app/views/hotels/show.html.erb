@@ -11,11 +11,11 @@
              <%= link_to "Global Web <br>".html_safe, @hotel.global_web_url, target: "_blank" %>
              <%= link_to "Local Site <br>".html_safe, @hotel.local_web_url, target: "_blank" unless @hotel.local_web_url == ""  %>
              <%= link_to "FaceBook <br>".html_safe, @hotel.facebook_url, target: "_blank" unless @hotel.facebook_url == "" %>
-             <%= link_to "Twitter <br>", @hotel.twitter_url, target: "_blank" unless @hotel.twitter_url == "" %>
+             <%= link_to "Twitter <br>".html_safe, @hotel.twitter_url, target: "_blank" unless @hotel.twitter_url == "" %>
 
             </p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-8">
           <h2>Contacts</h2>
           <% if @contacts.empty? %>
 			<em>No contacts saved for this hotel</em>
