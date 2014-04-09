@@ -1,0 +1,4 @@
+<%= div_for note do %>
+
+<%= note.note_detail %> - <%= link_to 'Delete Note', note, confirm: 'Are you sure?', method: :delete %>
+<% end %>

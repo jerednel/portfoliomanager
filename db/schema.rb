@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140409145431) do
+ActiveRecord::Schema.define(:version => 20140409181242) do
 
   create_table "contacts", :force => true do |t|
     t.string   "first_name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20140409145431) do
     t.string   "local_web_url"
     t.string   "facebook_url"
     t.string   "twitter_url"
+    t.string   "phone"
   end
 
   create_table "hotels_tasks", :id => false, :force => true do |t|
@@ -51,6 +52,12 @@ ActiveRecord::Schema.define(:version => 20140409145431) do
   create_table "hotels_users", :id => false, :force => true do |t|
     t.integer "hotel_id"
     t.integer "user_id"
+  end
+
+  create_table "notes", :force => true do |t|
+    t.text    "note_detail"
+    t.integer "hotel_id"
+    t.string  "string"
   end
 
   create_table "tasks", :force => true do |t|

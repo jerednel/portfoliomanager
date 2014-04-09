@@ -1,13 +1,16 @@
 
-<div>
+<div style="padding:25px">
 <h3 style="display:inline"><%= link_to "Hotels", hotels_path %> > <%= @hotel.name %></h3> &nbsp;&nbsp;   <small><%= link_to "Edit", edit_hotel_path %></small>
 </div>
 <div class="row">
         <div class="col-md-4">
           <h2>Summary</h2>
 
-          <p><%= @hotel.address %></a><br />
-             <%= @hotel.city %>, <%= @hotel.state  %><br>
+          <p><strong>Phone</strong>: <%= @hotel.phone %><br /><br />
+          <strong>Address</strong><br>
+				<%= @hotel.address %><br />
+             <%= @hotel.city %>, <%= @hotel.state  %><br><br>
+             <strong>Links</strong><br>
              <%= link_to "Global Web <br>".html_safe, @hotel.global_web_url, target: "_blank" %>
              <%= link_to "Local Site <br>".html_safe, @hotel.local_web_url, target: "_blank" unless @hotel.local_web_url == ""  %>
              <%= link_to "FaceBook <br>".html_safe, @hotel.facebook_url, target: "_blank" unless @hotel.facebook_url == "" %>
@@ -50,34 +53,36 @@
        </div>
 
       </div>
+<div class='row'><div class='span12'><hr /></div></div>
+
+	<div class="row">
+        <div class="col-md-5">
+          <h3>Currently Open Tasks</h3>
+
+			<% if @tasks.empty? %>
+			<ul>
+			<li><em>No open tasks for this hotel</em></li>
+			</ul>
+			<% else %>
+			<div id="tasks">
+				<%= render :partial => @tasks, :locals => { :list => true } %>
 
 
+			</div>
+			<% end %>
+			<br>
+			<%= form_for(Task.new, :remote => true) do |f| %>
+ 			<%= f.hidden_field :id, :value => @hotel.id %>
+			<table>
+				<tr>
+				  <td>
+				<%= f.text_field :name %></td>
+				<td><%= f.submit %></td></tr>
+			</table>
+			<% end %>
 
-
-<h3>Currently Open Tasks</h3>
-
-<% if @tasks.empty? %>
-<ul>
-<li><em>No open tasks for this hotel</em></li>
-</ul>
-<% else %>
-<div id="tasks">
-	<%= render :partial => @tasks, :locals => { :list => true } %>
-
-
-</div>
-<% end %>
-<br>
-<%= form_for(Task.new, :remote => true) do |f| %>
- <%= f.hidden_field :id, :value => @hotel.id %>
-<table>
-	<tr>
-	  <td>
-	<%= f.text_field :name %></td>
-	<td><%= f.submit %></td></tr>
-</table>
-<% end %>
-
+        </div>
+        <div class="col-md-7">
 <h3>Closed Tasks</h3>
 <ul>
 <% if @closed_tasks.empty? %>
@@ -89,6 +94,38 @@
 <% end %>
 </ul>
 
+       </div>
+
+      </div>
+
+
+
+<div class='row'><div class='span12'><hr /></div></div>
+
+<h3>Hotel Notes</h3>
+
+<% if @notes.empty? %>
+
+<ul>
+<li><em>No open notes for this hotel</em></li>
+</ul>
+<% else %>
+<div id="notes" class="container">
+	<%= render :partial => @notes, :locals => { :list => true } %>
+</div>
+<% end %>
+<br>
+<%= form_for(Note.new, :remote => true) do |f| %>
+ <%= f.hidden_field :hotel_id, :value => @hotel.id %>
+<table>
+	<tr>
+	  <td>
+	<%= f.text_area :note_detail, :cols => "100", :rows => "5" %></td>
+	</tr>
+	<tr>
+	<td><%= f.submit %></td></tr>
+</table>
+<% end %>
 
 <br><br>
 <small><%= link_to "Transfer Ownership", transfer_hotel_path(@hotel.id) %></small>

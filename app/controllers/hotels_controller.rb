@@ -26,6 +26,7 @@ class HotelsController < ApplicationController
 		if Hotel.where("id = ?", params[:id]).count  == 1 && @user.hotels.where("id = ?", params[:id]) != '[]'
 			@hotel = Hotel.find(params[:id])
 			@tasks = @hotel.tasks.where("status = 'open'")
+			@notes = @hotel.notes
 			@closed_tasks = @hotel.tasks.where("status = 'closed'")
 			@contacts = @hotel.contacts
 			@contact_email_list = []
