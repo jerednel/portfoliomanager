@@ -60,9 +60,8 @@
           <h3>Currently Open Tasks</h3>
 
 			<% if @tasks.empty? %>
-			<ul>
-			<li><em>No open tasks for this hotel</em></li>
-			</ul>
+			<div id="tasks">
+			</div>
 			<% else %>
 			<div id="tasks">
 				<%= render :partial => @tasks, :locals => { :list => true } %>
@@ -105,10 +104,9 @@
 <h3>Hotel Notes</h3>
 
 <% if @notes.empty? %>
+<div id="notes" class="container">
 
-<ul>
-<li><em>No open notes for this hotel</em></li>
-</ul>
+</div>
 <% else %>
 <div id="notes" class="container">
 	<%= render :partial => @notes, :locals => { :list => true } %>
