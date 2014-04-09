@@ -1,0 +1,5 @@
+<%= div_for task do %>
+
+<%= task.name %> - <%= link_to "Close Task", close_task_path + "?task_id=" + task.id.to_s %>
+
+<% end %>
