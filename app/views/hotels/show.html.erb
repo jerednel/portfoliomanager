@@ -7,7 +7,7 @@
           <h2>Summary</h2>
 
           <p><%= @hotel.address %></a><br />
-             <%=raw @hotel.city + ", "+ @hotel.state + "<br>" %>
+             <%= @hotel.city %>, <%= @hotel.state  %><br>
              <%= link_to "Global Web <br>".html_safe, @hotel.global_web_url, target: "_blank" %>
              <%= link_to "Local Site <br>".html_safe, @hotel.local_web_url, target: "_blank" unless @hotel.local_web_url == ""  %>
              <%= link_to "FaceBook <br>".html_safe, @hotel.facebook_url, target: "_blank" unless @hotel.facebook_url == "" %>
