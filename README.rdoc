@@ -14,3 +14,9 @@ Each hotel can save local geo data as well as contact data for all associated co
 Each hotel has tasks that can be created and closed out
 The homepage features a running list of tasks across all hotels in your portfolio
 Hotels can be transfered to other individuals in the same system for easy rollover of portfolios to other managers
+
+===Home Screen
+rdoc-image:https://i.ibb.co/9T0sR3C/Capture.png
+
+===Hotel Management
+rdoc-image:https://i.ibb.co/c69BgmH/Capture2.png
