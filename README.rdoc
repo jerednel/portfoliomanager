@@ -3,12 +3,12 @@ This is a PoC for a hotel portfolio manager that is built in Ruby on Rails.
 
 A live demo exists that you can register an account with at http://hotelmanager.herokuapp.com/
 
-** Use Case **
+=== Use Case 
 Ecommerce managers are hired to manage the digital marketing efforts of hotels.  Each manager is allocated dozens of hotels to keep track of.  There is currently no system in place to manage activites taken across all of these.
 
 This results in a suboptimal mess of excel spreadsheets that are inconsistent across each manager, making transfering ownership of assets and activites to other managers a chore.
 
-** Features **
+=== Features 
 Keep track of numerous hotels
 Each hotel can save local geo data as well as contact data for all associated contacts at a hotel
 Each hotel has tasks that can be created and closed out
